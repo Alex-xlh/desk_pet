@@ -133,7 +133,7 @@ function createPanelWindow() {
   const { x, y } = display.workArea;
 
   const panelWidth = 170;
-  const panelHeight = 160;
+  const panelHeight = 280;
 
   panelWindow = new BrowserWindow({
     x: x + width - panelWidth - 20,
@@ -248,47 +248,6 @@ function startMousePolling() {
 function buildContextMenu() {
   const template: MenuItemConstructorOptions[] = [
     {
-      label: config.followEnabled ? "暂停跟随" : "恢复跟随",
-      click: () => updateConfig({ followEnabled: !config.followEnabled })
-    },
-    {
-      label: "跟随模式",
-      submenu: [
-        {
-          label: "追逐 (Chase)",
-          type: "radio",
-          checked: config.followMode === "chase",
-          click: () => updateConfig({ followMode: "chase" })
-        },
-        {
-          label: "陪伴 (Companion)",
-          type: "radio",
-          checked: config.followMode === "companion",
-          click: () => updateConfig({ followMode: "companion" })
-        },
-        {
-          label: "慵懒 (Lazy)",
-          type: "radio",
-          checked: config.followMode === "lazy",
-          click: () => updateConfig({ followMode: "lazy" })
-        }
-      ]
-    },
-    { type: "separator" },
-    {
-      label: "鼠标穿透",
-      type: "checkbox",
-      checked: config.clickThrough,
-      click: () => updateConfig({ clickThrough: !config.clickThrough })
-    },
-    {
-      label: "总在最前",
-      type: "checkbox",
-      checked: config.alwaysOnTop,
-      click: () => updateConfig({ alwaysOnTop: !config.alwaysOnTop })
-    },
-    { type: "separator" },
-    {
       label: "退出程序",
       click: () => app.exit(0)
     }
@@ -299,12 +258,6 @@ function buildContextMenu() {
   return menu;
 }
 
-function updateConfig(patch: Partial<PetConfig>) {
-  config = saveConfig({ ...config, ...sanitizeConfigPatch(patch) });
-  applyWindowConfig();
-  broadcastConfig();
-  tray?.setContextMenu(buildContextMenu());
-}
 
 function applyWindowConfig() {
   mainWindow?.setAlwaysOnTop(config.alwaysOnTop, "screen-saver");
@@ -371,9 +324,7 @@ function getConfigPath() {
 }
 
 function getAssetPath(...segments: string[]) {
-  return app.isPackaged
-    ? path.join(process.resourcesPath, ...segments)
-    : path.join(app.getAppPath(), ...segments);
+  return path.join(app.getAppPath(), ...segments);
 }
 
 function windowTopLeftFromPetPosition(position: Point): Point {
