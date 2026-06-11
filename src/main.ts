@@ -300,10 +300,12 @@ function savePositionOccasionally(now: number) {
 
 function clampToWorkArea(point: Point, workArea: Rect): Point {
   const halfWidth = WINDOW_WIDTH / 2;
-  const petHeight = WINDOW_HEIGHT - 20;
+  // 允许宠物的底部坐标 (petPosition.y) 移动到屏幕更靠上的位置（例如屏幕顶部往下 80 像素处）
+  // 这样包含宠物的窗口可以超出屏幕上方，从而让宠物可以出现在屏幕上半部分
+  const minPetY = 80;
   return {
     x: clamp(point.x, workArea.x + halfWidth, workArea.x + workArea.width - halfWidth),
-    y: clamp(point.y, workArea.y + petHeight, workArea.y + workArea.height - 8)
+    y: clamp(point.y, workArea.y + minPetY, workArea.y + workArea.height - 8)
   };
 }
 
