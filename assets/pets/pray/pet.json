@@ -1,0 +1,13 @@
+{
+  "name": "pray",
+  "frameWidth": 456,
+  "frameHeight": 456,
+  "defaultScale": 0.42,
+  "anchor": {
+    "x": 0.5,
+    "y": 0.95
+  },
+  "animations": {
+    "main": { "row": 0, "frames": 15, "fps": 10, "columns": 4 }
+  }
+}

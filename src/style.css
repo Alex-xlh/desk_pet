@@ -1,0 +1,135 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+}
+
+body {
+  font-family:
+    Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.control-panel {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  z-index: 5;
+  width: 170px;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid rgba(69, 54, 38, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 252, 244, 0.9);
+  color: #3d3126;
+  font-size: 11px;
+  line-height: 1.25;
+  box-shadow: 0 10px 28px rgba(38, 30, 22, 0.15);
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  transition: width 0.2s ease;
+  overflow: hidden;
+}
+
+.control-panel.collapsed {
+  width: 140px;
+}
+
+.control-panel.collapsed .scale-control,
+.control-panel.collapsed .control-help {
+  display: none;
+}
+
+.control-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+  cursor: grab;
+}
+
+.control-header:active {
+  cursor: grabbing;
+}
+
+.control-header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.control-header strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.close-button,
+.toggle-button {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.close-button {
+  background: #e5484d;
+}
+
+.close-button:hover {
+  background: #c92a2f;
+}
+
+.toggle-button {
+  background: #f59f00;
+  font-size: 14px;
+}
+
+.toggle-button:hover {
+  background: #e67700;
+}
+
+.scale-control {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 7px;
+}
+
+.scale-control span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 650;
+}
+
+.scale-input {
+  width: 100%;
+  accent-color: #f59f00;
+}
+
+.control-help {
+  margin: 0;
+  padding-left: 14px;
+  color: rgba(61, 49, 38, 0.78);
+}
+
+.control-help li + li {
+  margin-top: 3px;
+}

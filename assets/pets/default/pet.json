@@ -1,0 +1,13 @@
+{
+  "name": "default",
+  "frameWidth": 400,
+  "frameHeight": 400,
+  "defaultScale": 0.42,
+  "anchor": {
+    "x": 0.5,
+    "y": 0.95
+  },
+  "animations": {
+    "main": { "row": 0, "frames": 25, "fps": 12, "columns": 5 }
+  }
+}
