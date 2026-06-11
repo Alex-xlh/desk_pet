@@ -84,6 +84,7 @@ function createWindow() {
     resizable: false,
     hasShadow: false,
     skipTaskbar: true,
+    icon: getAssetPath("assets", "pets", "default", "preview.png"),
     alwaysOnTop: config.alwaysOnTop,
     show: false,
     focusable: true,
@@ -144,6 +145,7 @@ function createPanelWindow() {
     resizable: false,
     hasShadow: false,
     skipTaskbar: true,
+    icon: getAssetPath("assets", "pets", "default", "preview.png"),
     alwaysOnTop: config.alwaysOnTop,
     show: false,
     webPreferences: {
@@ -246,26 +248,26 @@ function startMousePolling() {
 function buildContextMenu() {
   const template: MenuItemConstructorOptions[] = [
     {
-      label: config.followEnabled ? "Pause follow" : "Resume follow",
+      label: config.followEnabled ? "暂停跟随" : "恢复跟随",
       click: () => updateConfig({ followEnabled: !config.followEnabled })
     },
     {
-      label: "Follow mode",
+      label: "跟随模式",
       submenu: [
         {
-          label: "Chase",
+          label: "追逐 (Chase)",
           type: "radio",
           checked: config.followMode === "chase",
           click: () => updateConfig({ followMode: "chase" })
         },
         {
-          label: "Companion",
+          label: "陪伴 (Companion)",
           type: "radio",
           checked: config.followMode === "companion",
           click: () => updateConfig({ followMode: "companion" })
         },
         {
-          label: "Lazy",
+          label: "慵懒 (Lazy)",
           type: "radio",
           checked: config.followMode === "lazy",
           click: () => updateConfig({ followMode: "lazy" })
@@ -274,20 +276,20 @@ function buildContextMenu() {
     },
     { type: "separator" },
     {
-      label: "Click through",
+      label: "鼠标穿透",
       type: "checkbox",
       checked: config.clickThrough,
       click: () => updateConfig({ clickThrough: !config.clickThrough })
     },
     {
-      label: "Always on top",
+      label: "总在最前",
       type: "checkbox",
       checked: config.alwaysOnTop,
       click: () => updateConfig({ alwaysOnTop: !config.alwaysOnTop })
     },
     { type: "separator" },
     {
-      label: "Quit",
+      label: "退出程序",
       click: () => app.exit(0)
     }
   ];

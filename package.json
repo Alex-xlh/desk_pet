@@ -12,7 +12,33 @@
     "build:main": "tsc -p tsconfig.electron.json",
     "build:renderer": "vite build",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.electron.json",
-    "generate:assets": "powershell -ExecutionPolicy Bypass -File scripts/create-placeholder-spritesheet.ps1"
+    "generate:assets": "powershell -ExecutionPolicy Bypass -File scripts/create-placeholder-spritesheet.ps1",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.alex-xlh.desk-pet",
+    "productName": "Desktop Mouse Pet",
+    "icon": "assets/pets/default/preview.png",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "assets/**/*",
+      "package.json",
+      "panel.html"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   },
   "dependencies": {
     "pixi.js": "^8.14.0"
@@ -20,6 +46,7 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "electron": "^33.4.11",
+    "electron-builder": "^26.15.2",
     "typescript": "^5.9.3",
     "vite": "^7.2.6"
   }
