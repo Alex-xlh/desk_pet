@@ -5,16 +5,13 @@
   "main": "dist-electron/main.js",
   "private": true,
   "scripts": {
-    "dev": "npm run build:main && node scripts/dev.mjs",
-    "start": "electron .",
+    "dev": "tauri dev",
     "dev:renderer": "vite --host 127.0.0.1",
-    "build": "npm run build:main && npm run build:renderer",
-    "build:main": "tsc -p tsconfig.electron.json",
+    "build": "tauri build",
     "build:renderer": "vite build",
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.electron.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "generate:assets": "powershell -ExecutionPolicy Bypass -File scripts/create-placeholder-spritesheet.ps1",
-    "pack": "electron-builder --dir",
-    "dist": "npm run build && electron-builder"
+    "tauri": "tauri"
   },
   "build": {
     "appId": "com.alex-xlh.desk-pet",
@@ -44,9 +41,9 @@
     "pixi.js": "^8.14.0"
   },
   "devDependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@tauri-apps/cli": "^2.11.2",
     "@types/node": "^24.10.1",
-    "electron": "^33.4.11",
-    "electron-builder": "^26.15.2",
     "typescript": "^5.9.3",
     "vite": "^7.2.6"
   }

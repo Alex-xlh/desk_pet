@@ -1,3 +1,4 @@
+import "./tauri-api";
 import "./panel.css";
 import type { PetConfig } from "./types";
 

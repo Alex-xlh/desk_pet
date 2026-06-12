@@ -1,4 +1,5 @@
 import { Application, Assets, AnimatedSprite, Rectangle, Texture } from "pixi.js";
+import "./tauri-api";
 import "./style.css";
 import type { MousePayload, PetConfig, PetManifest, Point, Rect } from "./types";
 
